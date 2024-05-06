@@ -11,6 +11,8 @@ jobs:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
         node: [ 18 ]
     runs-on: ${{matrix.os}}
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v3
@@ -19,6 +21,7 @@ jobs:
         with:
           node-version: ${{matrix.node}}
           registry-url: https://npm.pkg.github.com/
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup pnpm
         uses: pnpm/action-setup@v3.0.0
       - name: Install
@@ -45,6 +48,7 @@ jobs:
         with:
           node-version: 18
           registry-url: https://npm.pkg.github.com/
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup pnpm
         uses: pnpm/action-setup@v3.0.0
       - name: Install
