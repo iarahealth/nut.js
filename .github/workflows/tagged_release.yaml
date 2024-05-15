@@ -25,9 +25,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v3.0.0
       - name: Install
-        run: |
-          pnpm whoami
-          pnpm i
+        run: pnpm i
       - name: Compile
         run: npm run compile
       - name: Run tests
@@ -51,10 +49,7 @@ jobs:
           token: ${{ secrets.NPM_TOKEN }}
       - name: Setup pnpm
         uses: pnpm/action-setup@v3.0.0
-      - name: Install
-        run: |
-          pnpm whoami
-          pnpm i
+      - run: pnpm i
       - name: Publish tagged release to npm
         run: pnpm run publish:release
         env:
